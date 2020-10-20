@@ -14,6 +14,7 @@
 	let emojiArray = [];
 	let excludedCategories = ['Flags', 'Objects'];
 	let includedCategories = ['Activities'];
+	let title 
 	
 	async function getData () {
 		let response = await fetch("https://unpkg.com/emoji.json@12.1.1/emoji.json");
@@ -26,6 +27,7 @@
 			categories = [...new Set(emojiData.map(a => a.group))]
 		
 			emojiList = updateList(emojiData)
+			title = generateEmoji()
 		})
 	}
 	
@@ -108,6 +110,10 @@
 		emojiList = updateList(emojiData)
 	}
 </script>
+
+<svelte:head>
+	<title>Emoji Randomizer {title}</title>
+</svelte:head>
 
 <div class='container'>
 	
